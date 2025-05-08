@@ -9,11 +9,6 @@ class News(BaseModel):
     title: str
     corpus: str
 
-def remove_duplicates(filename):
-    df = pd.read_csv(filename, names=["idx", "title", "corpus"])
-    df = df.drop_duplicates(subset=["idx"])
-    df.to_csv('deduplicated_generations.csv', index=False)
-
 def write_to_file(idx, title, corpus):
     with open('generated.csv', 'a+') as csvfile:
         content_writer = csv.writer(csvfile, delimiter=',')
@@ -75,8 +70,6 @@ def generateContentFromGemini(iterator):
                 print("Retrying after 5 seconds...")
                 time.sleep(5)
                 retries += 1
-
-remove_duplicates("generated.csv")
 
 # gemini client
 client = genai.Client(api_key="AIzaSyCa_-ulJVoRg6XscSa8xjP_joFqfmtOz7o")
