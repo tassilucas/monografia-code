@@ -1,6 +1,8 @@
 import pandas as pd
 from google import genai
 from pydantic import BaseModel
+from dotenv import load_dotenv
+import os
 import json
 import time
 import csv
@@ -72,7 +74,8 @@ def generateContentFromGemini(iterator):
                 retries += 1
 
 # gemini client
-client = genai.Client(api_key="AIzaSyCa_-ulJVoRg6XscSa8xjP_joFqfmtOz7o")
+load_dotenv()
+client = genai.Client(api_key=os.getenv("GEMINI_KEY")
 
 # env variables
 checkpoint = 0
