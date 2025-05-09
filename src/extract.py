@@ -75,7 +75,7 @@ def generateContentFromGemini(iterator):
 
 # gemini client
 load_dotenv()
-client = genai.Client(api_key=os.getenv("GEMINI_KEY")
+client = genai.Client(api_key=os.getenv("GEMINI_KEY"))
 
 # env variables
 checkpoint = 0
